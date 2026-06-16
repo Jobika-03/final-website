@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURELIUS VANCE</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold:#D4AF37;
+    --gold-light: #E8D5A3;
+    --cream: #F5EDD8;
+    --dark: #1a1410;
+    --dark-mid: #2a2018;
+  }
+
+  html, body {
+    width: 100%; height: 100vh;
+    overflow: hidden;
+    background: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    color: #fff;
+    cursor: default;
+  }
+
+  .brand-logo{
+    transition:.4s;
+}
+
+.brand-logo:hover{
+    transform:scale(1.05);
+}
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*bg images */
+
+.luxury-gallery{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
+}
+
+.bg-slide{
+    position:absolute;
+    inset:0;
+
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+
+    opacity:0;
+
+    transform:scale(1);
+
+    transition:opacity 1.5s ease;
+
+    animation:luxuryZoom 18s linear infinite;
+    will-change:transform;
+}
+
+.bg-slide.active{
+    opacity:1;
+     z-index:2;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.65)
+    );
+
+    z-index:1;
+}
+
+/*
+.bg-slide::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:inherit;
+    background-size:cover;
+    background-position:center;
+
+    filter:blur(25px) brightness(.45);
+    transform:scale(1.15);
+}
+
+.bg-slide::after{
+    content:'';
+
+    position:absolute;
+
+    top:80px;
+    bottom:80px;
+    left:180px;
+    right:180px;
+
+    background:inherit;
+    background-size:cover;
+    background-position:center;
+
+    filter:brightness(.75);
+
+    animation:zoomLuxury 12s linear infinite;
+}
+    */
+
+/*
+.bg-slide{
+    position:absolute;
+
+    top:40px;
+    left:40px;
+    right:40px;
+    bottom:40px;
+
+    opacity:0;
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    box-shadow:
+    0 0 0 1px rgba(212,175,55,.08),
+    0 30px 80px rgba(0,0,0,.65);
+
+    transition:opacity 1.5s ease;
+
+    animation:zoomLuxury 12s linear infinite;
+}
+   
+
+.bg-slide::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        rgba(10,10,10,.55),
+        rgba(10,10,10,.75)
+    );
+}
+     */
+
+
+
+@keyframes luxuryZoom{
+
+    0%{
+        transform:scale(1);
+    }
+
+    100%{
+        transform:scale(1.50);
+    }
+
+}
+
+
+.hero-texture{
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(0,0,0,0) 20%,
+        rgba(0,0,0,.35) 70%
+    );
+
+    z-index:1;
+}
+
+ /*
+.hero::before{
+    content:'';
+    position:absolute;
+
+    top:25px;
+    left:25px;
+    right:25px;
+    bottom:25px;
+
+    border:1px solid rgba(212,175,55,.18);
+
+    pointer-events:none;
+    z-index:2;
+}
+
+*/
+
+
+  /* Background gradient simulating dark moody photo 
+  .hero-bg{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+      rgba(10,10,10,.78),
+      rgba(10,10,10,.78)
+    ),
+    url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1920");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    z-index:0;
+}
+    */
+
+  /* Decorative overlay texture */
+  .hero-texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(201,169,110,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 85% 20%, rgba(201,169,110,0.06) 0%, transparent 35%);
+    z-index: 1;
+  }
+
+  /* logo
+
+  .brand-logo{
+    width:80px;
+    height:auto;
+    display:block;
+    margin:0 auto 8px;
+    filter:brightness(1.2);
+}
+
+.brand{
+    font-family:'Cinzel', serif;
+    font-size:28px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+}
+*/
+  /* Bokeh / sparkle dots */
+  .sparkles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .sparkle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(201,169,110,0.5);
+    animation: twinkle var(--d) ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.1; transform: scale(0.8); }
+    to   { opacity: 0.7; transform: scale(1.2); }
+  }
+
+  /* ── NAVBAR ── */
+  .nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 60px 0;
+    animation: fadeDown 1s ease 0.2s both;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.7);
+  }
+  .nav-left svg { opacity: 0.7; }
+
+  .nav-logo{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+  .nav-logo .crown {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+  .nav-logo .brand {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .nav-right a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .nav-right a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── NAV MENU ── */
+  .nav-menu {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    padding: 22px 0;
+    margin-top: -20px;
+    animation: fadeDown 1s ease 0.4s both;
+  }
+
+  .nav-menu a {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--gold);
+  }
+  .nav-menu a:hover { color: var(--gold); }
+  .nav-menu a .arrow {
+    font-size: 9px;
+    margin-left: 3px;
+    opacity: 0.6;
+  }
+
+  /* ── HERO CONTENT ── */
+  .hero-body{
+    position:relative;
+    z-index:10;
+    height:calc(100vh - 180px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    transform:translateY(-10px);
+    padding:20px;
+}
+
+  .tag-script {
+    font-family: 'Sacramento', cursive;
+    font-size: 42px;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+    animation: fadeUp 1.1s ease 0.6s both;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-family:'Cinzel', serif;
+    font-size:clamp(45px,6vw,90px);
+    line-height:1;
+    text-align:center;
+    margin-bottom:20px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 28px;
+    animation: fadeUp 1.1s ease 0.8s both;
+  }
+
+  .hero-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.65);
+    max-width:700px;
+    width:100%;
+    text-align:center;
+    margin:0 auto;
+    font-size:18px;
+    line-height:1.8;
+    line-height: 1.9;
+    animation: fadeUp 1.1s ease 1s both;
+  }
+
+  /* CTA */
+   .hero-cta {
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    
+    gap: 18px;
+    align-items: center;
+    animation: fadeUp 1.1s ease 1.2s both;
+  }
+  .btn-primary {
+    padding:15px 45px;
+    min-width:220px;
+
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--gold);
+    border: none;
+    
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    background: transparent;
+    border: 1px solid rgba(201,169,110,0.45);
+    padding: 14px 36px;
+    cursor: pointer;
+    transition: border-color 0.3s, color 0.3s, transform 0.2s;
+    text-decoration: none;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+  /* ── SIDE LABELS ── */
+  .side-text {
+    position: absolute;
+    z-index: 10;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    animation: fadeIn 1.5s ease 1.4s both;
+  }
+  .side-text.left { left: 28px; }
+  .side-text.right { right: 28px; transform: translateY(-50%); }
+
+  /* ── SLIDE DOTS ── */
+  .slide-dots {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeIn 1.5s ease 1.4s both;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .dot.active {
+    background: var(--gold);
+    transform: scale(1.4);
+  }
+  /* Scroll arrow */
+  .scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 14px;
+    animation: bounce 2s ease infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(4px); }
+  }
+
+ .hero-texture,
+.sparkles,
+.gold-line,
+.nav,
+.nav-menu,
+.hero-body{
+    position:relative;
+    z-index:10;
+}
+
+  /* ── DECORATIVE GOLD LINE ── */
+  .gold-line {
+    position: absolute;
+    z-index: 5;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.12) 30%, rgba(201,169,110,0.12) 70%, transparent);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .brand{
+    font-family:'Cinzel', serif;
+    font-size:22px;
+    letter-spacing:0.18em;
+    margin-top:5px;
+}
+
+.tag-script{
+    font-size:42px;
+}
+
+.hero-title{
+    font-size:clamp(45px,6vw,90px);
+}
+
+.hero-desc{
+    font-size:18px;
+}
+
+.btn-primary{
+    font-size:12px;
+}
+
+  /* ── COLOR SWATCH (top right) ── */
+  .color-panel {
+    position: absolute;
+    top: 120px;
+    right: 0;
+    z-index: 20;
+    background: rgba(255,255,255,0.96);
+    border-radius: 12px 0 0 12px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: slideLeft 1s ease 1.6s both;
+    box-shadow: -2px 0 20px rgba(0,0,0,0.3);
+  }
+  .color-panel-close {
+    align-self: flex-end;
+    font-size: 12px;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .color-wheel {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+  }
+  .color-panel-label {
+    font-size: 10px;
+    color: #333;
+    text-align: center;
+    line-height: 1.3;
+    font-family: sans-serif;
+  }
+  .swatch {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes slideLeft {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Ornamental divider */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 16px;
+    animation: fadeUp 1.1s ease 0.5s both;
+  }
+  .ornament-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .ornament-line.rev {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+  .ornament-diamond {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+  <!-- Background -->
+  
+  <div class="luxury-gallery">
+
+    <div class="bg-slide active"
+        style="background-image:url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=2000');">
+    </div>
+
+    <div class="bg-slide"
+        style="background-image:url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=2000');">
+    </div>
+
+    <div class="bg-slide"
+        style="background-image:url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=2000');">
+    </div>
+
+</div>
+  
+  <div class="hero-texture"></div>
+
+  <!-- Sparkle dots -->
+  <div class="sparkles" id="sparkles"></div>
+
+  <!-- Vertical center line -->
+  <div class="gold-line"></div>
+
+ 
+
+  <!-- Navbar -->
+  <nav class="nav">
+    
+
+    <div class="nav-logo">
+    <!--<img src="logo.jpeg" alt="Aurelius Vance Logo" class="brand-logo"> -->
+    <span class="brand">AURELIUS VANCE</span>
+</div>
+
+    <div class="nav-right">
+      <a href="#" aria-label="Twitter">𝕏</a>
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="Instagram">◎</a>
+      <a href="#" aria-label="YouTube">▶</a>
+    </div>
+  </nav>
+
+  <!-- Navigation menu -->
+  <nav class="nav-menu">
+    <a href="#" class="active">Home</a>
+    <a href="#">Collections</a>
+    <a href="#">Luxury Wear</a>
+    <a href="#">Editorial</a>
+</nav>
+
+  <!-- Hero content -->
+  <div class="hero-body">
+    <div class="ornament">
+      <div class="ornament-line rev"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <div class="tag-script">
+Timeless Luxury Fashion
+</div>
+
+    <h1 class="hero-title">
+ELEVATED<br>
+MODERN STYLE
+</h1>
+    <p class="hero-desc">
+AURELIUS VANCE redefines contemporary luxury with
+meticulously crafted apparel, timeless silhouettes,
+and refined elegance designed for those who appreciate
+exceptional quality and modern sophistication.
+</p>
+
+    <div class="hero-cta">
+    <a href="signin.html" class="btn-primary">
+       Read More
+    </a>
+</div>
+  </div>
+
+ 
+
+  <!-- Scroll indicator -->
+  <div class="scroll-hint">↓</div>
+
+  
+  <!-- Color swatch panel -->
+  <!--
+  <div class="color-panel" id="colorPanel">
+    <span class="color-panel-close" onclick="document.getElementById('colorPanel').style.display='none'">✕</span>
+    <div class="color-wheel"></div>
+    <div class="color-panel-label">Try your<br>colors</div>
+    <div class="swatch" style="background:#C9A96E;"></div>
+    <div class="swatch" style="background:#1a1410;"></div>
+  </div>
+
+-->
+
+</section>
+
+<script>
+
+const user =
+    localStorage.getItem(
+        "user"
+    );
+
+if(!user){
+    window.location.href =
+        "signin.html";
+}
+
+</script>
+
+<script>
+  // Generate sparkle dots
+  const container = document.getElementById('sparkles');
+  for (let i = 0; i < 55; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    const size = Math.random() * 3 + 1;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      --d:${(Math.random()*3+2).toFixed(1)}s;
+      animation-delay:${(Math.random()*4).toFixed(1)}s;
+      opacity:${(Math.random()*0.4+0.1).toFixed(2)};
+    `;
+    container.appendChild(s);
+  }
+
+  // Slide dots interaction
+  document.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+    });
+  });
+</script>
+<script>
+
+const slides = document.querySelectorAll('.bg-slide');
+
+let current = 0;
+
+setInterval(() => {
+
+    slides[current].classList.remove('active');
+
+    current = (current + 1) % slides.length;
+
+    slides[current].classList.add('active');
+
+}, 6000);
+
+</script>
+</body>
+</html>
+
+

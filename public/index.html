@@ -67,7 +67,7 @@
     opacity:0;
     transform:scale(1);
 
-    transition:opacity 2s ease;
+    transition:opacity 2s ease,transform 8s linear;
     will-change:transform;
 }
 
@@ -75,6 +75,7 @@
     opacity:1;
     z-index:2;
 }
+/*
 @keyframes zoomIn{
     from{
         transform:scale(1);
@@ -83,6 +84,7 @@
         transform:scale(1.15);
     }
 }
+    */
 .hero::before{
     content:'';
     position:absolute;
@@ -953,15 +955,15 @@
   <div class="luxury-gallery">
 
     <div class="bg-slide active"
-        style="background-image:url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=2000');">
+        style="background-image:url('1.png');">
     </div>
 
     <div class="bg-slide"
-        style="background-image:url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=2000');">
+        style="background-image:url('2.jpeg');">
     </div>
 
     <div class="bg-slide"
-        style="background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=2000');">
+        style="background-image:url('3.png');">
     </div>
 
 </div>
@@ -1245,6 +1247,54 @@ if(!user){
     });
   });
 </script>
+
+<script>
+const bgSlides = document.querySelectorAll(".bg-slide");
+const textSlides = document.querySelectorAll(".hero-slide");
+
+let current = 0;
+
+function showSlide(index) {
+
+    bgSlides.forEach(slide => {
+        slide.classList.remove("active");
+    });
+
+    textSlides.forEach(slide => {
+        slide.classList.remove("active");
+    });
+
+    const bg = bgSlides[index];
+    const text = textSlides[index];
+
+    bg.style.transition = "none";
+    bg.style.transform = "scale(1)";
+
+    void bg.offsetWidth;
+
+    bg.classList.add("active");
+    text.classList.add("active");
+
+    requestAnimationFrame(() => {
+        bg.style.transition =
+            "opacity 2s ease, transform 8s linear";
+
+        bg.style.transform = "scale(1.15)";
+    });
+}
+
+/* First image */
+window.addEventListener("load", () => {
+    showSlide(0);
+});
+
+/* Auto slider */
+setInterval(() => {
+    current = (current + 1) % bgSlides.length;
+    showSlide(current);
+}, 8000);
+</script>
+<!--
 <script>
 const bgSlides = document.querySelectorAll(".bg-slide");
 const textSlides = document.querySelectorAll(".hero-slide");
@@ -1287,7 +1337,7 @@ setInterval(() => {
 
 }, 8000);
 </script>
-
+-->
 <script>
   const modal =
     document.getElementById("investorModal");
